@@ -116,6 +116,46 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
 .sbar-fill{height:100%;border-radius:3px;transition:width .5s ease}
 .no-tgt-txt{font-size:11px;color:var(--tm);font-style:italic}
 .edit-tgt-btn{background:var(--sf2);border:1px solid var(--bd2);color:var(--ts);font-family:inherit;font-size:12px;padding:5px 12px;border-radius:var(--r);cursor:pointer}
+.zone-grp{margin-bottom:18px}
+.zone-lbl{font-size:10.5px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.07em;padding:5px 0;border-bottom:1px solid var(--gbdr);margin-bottom:10px}
+.sh-row{display:flex;align-items:center;gap:10px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:10px 12px;margin-bottom:6px}
+.sh-info{flex:1;min-width:0}
+.sh-name{font-size:13px;font-weight:500}
+.sh-states-lbl{font-size:11px;color:var(--ts);margin-top:2px}
+.sh-row input{width:130px;flex-shrink:0;background:var(--sf2);border:1px solid var(--bd2);color:var(--tp);font-family:inherit;font-size:13px;padding:6px 10px;border-radius:var(--r);outline:none;text-align:right}
+.sh-row input:focus{border-color:var(--gold)}
+.zone-bar-wrap{background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);padding:12px 14px;margin-bottom:8px}
+.zone-bar-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.zone-bar-name{font-size:12px;font-weight:600}
+.zone-bar-pct{font-size:13px;font-weight:600}
+.zone-bar-nums{font-size:11px;color:var(--ts);margin-bottom:5px}
+.zone-bars-wrap{margin-bottom:16px}
+.sh-grid-label{font-size:11px;font-weight:600;color:var(--ts);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+/* Monthly target input table */
+.mtbl-wrap{overflow-x:auto;margin-bottom:16px;border:1px solid var(--bd);border-radius:var(--r)}
+.mtbl{border-collapse:collapse;width:100%}
+.mtbl th{font-size:10.5px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;padding:7px 10px;text-align:center;white-space:nowrap;background:var(--sf3);border-bottom:1px solid var(--bd)}
+.mtbl th.sticky-col{text-align:left;position:sticky;left:0;z-index:3;min-width:170px;background:var(--sf3)}
+.mtbl td{padding:5px 8px;border-bottom:1px solid var(--bd);text-align:center;vertical-align:middle}
+.mtbl td.sticky-col{text-align:left;position:sticky;left:0;z-index:1;background:var(--sf2);white-space:nowrap;padding:7px 10px}
+.mtbl td.zone-row{background:var(--sf3)!important;font-size:10.5px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;padding:6px 10px;position:sticky;left:0;z-index:2}
+.mtbl tr:hover td.sticky-col{background:rgba(255,255,255,0.04)}
+.mtbl input[type=number]{width:100px;background:var(--sf);border:1px solid var(--bd2);color:var(--tp);font-family:inherit;font-size:12px;padding:5px 8px;border-radius:5px;outline:none;text-align:right;display:block;margin:0 auto}
+.mtbl input[type=number]:focus{border-color:var(--gold)}
+.mtbl .nat-row td{font-size:12px;font-weight:600;color:var(--gold);background:var(--sf3)!important;padding:7px 10px;border-top:1.5px solid var(--gbdr)}
+.mtbl .nat-row td.sticky-col{position:sticky;left:0;z-index:2;background:var(--sf3)!important}
+/* Monthly achievement trend table */
+.ach-wrap{overflow-x:auto}
+.ach-tbl{border-collapse:collapse;width:100%}
+.ach-tbl th{font-size:10.5px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;padding:7px 12px;text-align:center;white-space:nowrap;border-bottom:1px solid var(--bd)}
+.ach-tbl th.sticky-col{text-align:left;position:sticky;left:0;z-index:3;min-width:160px;background:var(--sf)}
+.ach-tbl td{font-size:12px;padding:7px 12px;border-bottom:1px solid var(--bd);text-align:center;white-space:nowrap}
+.ach-tbl td.sticky-col{text-align:left;font-weight:500;position:sticky;left:0;z-index:1;background:var(--sf)}
+.ach-tbl td.zone-row{background:var(--sf3)!important;font-size:10.5px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;position:sticky;left:0;z-index:2}
+.ach-tbl tr:hover td:not(.zone-row){background:var(--sf2)}
+.ach-tbl tr:hover td.sticky-col{background:var(--sf2)}
+.ach-pill{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;display:inline-block}
+.ach-tbl .nat-row td{font-weight:700;background:var(--sf3)!important;border-top:1.5px solid var(--gbdr)}
 .msel{background:var(--sf2);border:1px solid var(--bd2);color:var(--tp);font-family:inherit;font-size:12px;padding:5px 10px;border-radius:var(--r);outline:none}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .cgrid3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin-bottom:14px}
@@ -164,13 +204,30 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
 </div>
 
 <div class="ov" id="tgtOv">
-  <div class="ocard">
-    <div class="otitle">Set state-wise monthly targets</div>
-    <div class="osub">Enter DCC volume target (amount) per state. Only IS_DCC = Yes transactions are counted.</div>
-    <div class="ts-national" style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;color:var(--ts)">National Monthly Target (auto-sum)</div><div class="ts-national-val" id="natTotalLbl">0</div></div><div style="font-size:11px;color:var(--ts);text-align:right">Updates as<br>you type</div></div>
-    <div class="ts-tip">Leave blank for "no target".</div>
-    <div class="state-rows" id="stateRows"></div>
-    <button class="obtn" onclick="applyTargets()">Build Dashboard →</button>
+  <div class="ocard" style="max-width:92vw;width:900px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:8px">
+      <div><div class="otitle">Month-wise Statehead Targets</div><div class="osub" style="margin-bottom:0">Enter ₹ DCC volume targets per Statehead per month. Matched via RSM column.</div></div>
+      <button onclick="document.getElementById('tgtOv').style.display='none'" style="background:none;border:1px solid var(--bd2);color:var(--ts);font-family:inherit;font-size:12px;padding:5px 12px;border-radius:var(--r);cursor:pointer;flex-shrink:0">✕ Close</button>
+    </div>
+    <!-- Add month control -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--ts)">Add a month:</span>
+      <input type="month" id="addMonthInput" style="background:var(--sf);border:1px solid var(--bd2);color:var(--tp);font-family:inherit;font-size:12px;padding:5px 10px;border-radius:var(--r);outline:none">
+      <button onclick="addExtraMonth()" style="background:var(--sf2);border:1px solid var(--bd2);color:var(--tp);font-family:inherit;font-size:12px;padding:5px 12px;border-radius:var(--r);cursor:pointer">+ Add Month</button>
+      <span style="font-size:11px;color:var(--tm)">Months from your data are shown automatically</span>
+    </div>
+    <!-- National totals row -->
+    <div class="ts-national" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div style="font-size:12px;color:var(--ts)">National totals per month (auto-sum) →</div>
+      <div id="natTotalLbl" style="font-size:13px;font-weight:600;color:var(--gold)"></div>
+    </div>
+    <!-- Table -->
+    <div class="mtbl-wrap"><table class="mtbl" id="monthTbl">
+      <thead><tr id="monthTblHead"><th class="sticky-col">Statehead</th></tr></thead>
+      <tbody id="monthTblBody"></tbody>
+      <tfoot><tr class="nat-row" id="monthTblFoot"><td class="sticky-col">🇮🇳 National Total</td></tr></tfoot>
+    </table></div>
+    <button class="obtn" onclick="applyTargets()">Save & Build Dashboard →</button>
   </div>
 </div>
 
@@ -221,19 +278,19 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
     </div>
 
     <div class="kgrid">
-      <div class="kcard"><div class="klbl">Total Transactions</div><div class="kval cgold" id="kTotal">—</div><div class="ksub" id="kTotalS"></div></div>
-      <div class="kcard"><div class="klbl">DCC Transactions</div><div class="kval cgreen" id="kDCC">—</div><div class="ksub" id="kDCCS"></div></div>
-      <div class="kcard"><div class="klbl">DCC Uptake Rate</div><div class="kval cblue" id="kUptake">—</div><div class="ksub" id="kUptakeS"></div></div>
-      <div class="kcard"><div class="klbl">DCC Volume</div><div class="kval cgold" id="kVol">—</div><div class="ksub" id="kVolS"></div></div>
-      <div class="kcard"><div class="klbl">Top Currency</div><div class="kval camber" id="kCcy">—</div><div class="ksub" id="kCcyS"></div></div>
-      <div class="kcard"><div class="klbl">Top Network</div><div class="kval cpurple" id="kNet">—</div><div class="ksub" id="kNetS"></div></div>
+      <div class="kcard"><div class="klbl">ICA Volume</div><div class="kval cgold" id="kICA">—</div><div class="ksub" id="kICAS">all transactions</div></div>
+      <div class="kcard"><div class="klbl">DCC Volume</div><div class="kval cgreen" id="kVol">—</div><div class="ksub" id="kVolS">IS_DCC = Yes only</div></div>
+      <div class="kcard"><div class="klbl">Conversion %</div><div class="kval cblue" id="kConv">—</div><div class="ksub" id="kConvS">DCC ÷ ICA amount</div></div>
+      <div class="kcard"><div class="klbl">ICA Transactions</div><div class="kval" id="kTotal">—</div><div class="ksub" id="kTotalS"></div></div>
+      <div class="kcard"><div class="klbl">DCC Transactions</div><div class="kval camber" id="kDCC">—</div><div class="ksub" id="kDCCS"></div></div>
+      <div class="kcard"><div class="klbl">Top Currency</div><div class="kval cpurple" id="kCcy">—</div><div class="ksub" id="kCcyS"></div></div>
       <div class="kcard"><div class="klbl">Active States</div><div class="kval" id="kStates">—</div><div class="ksub" id="kStatesS"></div></div>
       <div class="kcard"><div class="klbl">Active RMs</div><div class="kval" id="kRMs">—</div><div class="ksub" id="kRMsS"></div></div>
     </div>
 
     <div class="sec">
       <div class="sec-head">
-        <div><div class="sec-title">📍 Monthly Target Achievement</div><div class="sec-sub">DCC Volume (IS_DCC = Yes) vs state targets</div></div>
+        <div><div class="sec-title">📍 Monthly Target Achievement</div><div class="sec-sub">DCC Volume (IS_DCC = Yes) vs Statehead targets — grouped by Zone</div></div>
         <div style="display:flex;align-items:center;gap:10px">
           <span style="font-size:12px;color:var(--ts)">Month:</span>
           <select class="msel" id="tgtMonth" onchange="renderTargets()"></select>
@@ -245,8 +302,28 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
         <div class="nat-bar-nums" id="natNums">—</div>
         <div class="bar-track"><div class="bar-fill" id="natFill" style="width:0%"></div></div>
       </div>
+      <div id="zonesBarsWrap" class="zone-bars-wrap" style="display:none"></div>
+      <div class="sh-grid-label" id="shGridLabel" style="display:none">Statehead Breakdown</div>
       <div class="sgrid" id="sgrid"></div>
       <div id="noTgtMsg" style="display:none;text-align:center;padding:20px;color:var(--ts)">No targets set. <button class="edit-tgt-btn" onclick="openTargetSetter()">Set Targets →</button></div>
+    </div>
+
+    <!-- Monthly Achievement Trend -->
+    <div class="sec" id="monthAchSec" style="display:none;margin-bottom:14px">
+      <div class="sec-head">
+        <div><div class="sec-title">📅 Month-wise Achievement Trend</div><div class="sec-sub">% of target achieved per Statehead per month</div></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ts)">
+          <span style="display:inline-block;width:10px;height:10px;background:var(--gold);border-radius:2px"></span>≥100%
+          <span style="display:inline-block;width:10px;height:10px;background:var(--green);border-radius:2px"></span>≥75%
+          <span style="display:inline-block;width:10px;height:10px;background:var(--amber);border-radius:2px"></span>≥50%
+          <span style="display:inline-block;width:10px;height:10px;background:var(--red);border-radius:2px"></span>&lt;50%
+        </div>
+      </div>
+      <div class="ach-wrap"><table class="ach-tbl">
+        <thead><tr id="achTblHead"><th class="sticky-col">Statehead</th></tr></thead>
+        <tbody id="achTblBody"></tbody>
+        <tfoot><tr class="nat-row" id="achTblFoot"><td class="sticky-col">🇮🇳 National</td></tr></tfoot>
+      </table></div>
     </div>
 
     <div class="cgrid">
@@ -337,6 +414,8 @@ const isDCC=v=>['yes','y','1','true','opted','opted in','opt in','accept','accep
 const parseD=v=>{if(!v)return null;if(v instanceof Date)return isNaN(v)?null:v;const d=new Date(v);return isNaN(d)?null:d;};
 const fmt=(n,d=0)=>isNaN(n)||n===null?'—':Number(n).toLocaleString('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d});
 const fmtCcy=n=>{if(isNaN(n)||n===null)return'—';if(n>=1e7)return'₹'+fmt(n/1e7,2)+'Cr';if(n>=1e5)return'₹'+fmt(n/1e5,2)+'L';return'₹'+fmt(n,0);};
+// Always show in Lakhs (or Crores if very large) — used for volume displays
+const fmtL=n=>{if(isNaN(n)||n===null)return'—';if(n>=1e7)return'₹'+fmt(n/1e7,2)+'Cr';return'₹'+fmt(n/1e5,2)+'L';};
 const pct=(a,b)=>b>0?a/b*100:0;
 const parseHour=t=>{if(!t)return null;const m=String(t).match(/^(\d{1,2})[:h]/);return m?parseInt(m[1]):null;};
 const PALETTE=['#e89a2c','#60a5fa','#22c55e','#a78bfa','#f59e0b','#ef4444','#34d399','#fb923c','#818cf8','#f472b6'];
@@ -345,7 +424,7 @@ function autoDetect(cols){
   const r={},cn=cols.map(norm);
   for(const[f,{p,x}]of Object.entries(COLPAT)){
     for(const pat of p){
-      const i=x?cn.findIndex(c=>c===pat):cn.findIndex(c=>c===pat||c.includes(pat));
+      const np=norm(pat);const i=x?cn.findIndex(c=>c===np):cn.findIndex(c=>c===np||c.includes(np));
       if(i>=0){r[f]=cols[i];break;}
     }
   }
@@ -389,16 +468,147 @@ function showMapper(cols){
 }
 function applyMapping(){for(const f of Object.keys(FLABELS)){const v=document.getElementById('mp-'+f)?.value;if(v)map[f]=v;}document.getElementById('mapOv').style.display='none';showTargetSetter();}
 
-const getStates=()=>map.state?[...new Set(rawData.map(r=>String(r[map.state]||'')).filter(Boolean))].sort():[];
-function openTargetSetter(){showTargetSetter(true);}
-function showTargetSetter(keep=false){
-  const states=getStates(),rows=document.getElementById('stateRows');rows.innerHTML='';
-  if(!states.length)rows.innerHTML='<div style="color:var(--ts);font-size:12px;padding:10px">No state column found.</div>';
-  else states.forEach(st=>{const cur=stateTargets[st]||'';rows.innerHTML+=`<div class="srow"><div class="srow-name">${st}</div><input type="number" min="0" placeholder="Enter target" value="${keep&&cur?cur:''}" id="tgt-${CSS.escape(st)}" oninput="updateNatTotal()"></div>`;});
-  updateNatTotal();document.getElementById('tgtOv').style.display='flex';
+// stateTargets format: { 'Nikhil Mandale': { '2026-01': 1000000, '2026-02': 1200000 }, ... }
+let extraMonths=[];
+
+function getDataMonths(){
+  return [...new Set(rawData.map(r=>{const d=parseD(r[map.date]);return d?d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'):null;}).filter(Boolean))].sort();
 }
-function updateNatTotal(){let t=0;getStates().forEach(st=>{const el=document.getElementById('tgt-'+CSS.escape(st));if(el)t+=parseFloat(el.value)||0;});document.getElementById('natTotalLbl').textContent=fmtCcy(t);}
-function applyTargets(){getStates().forEach(st=>{const el=document.getElementById('tgt-'+CSS.escape(st));if(el){const v=parseFloat(el.value);stateTargets[st]=isNaN(v)||v<=0?null:v;}});document.getElementById('tgtOv').style.display='none';buildDashboard();}
+function getAllMonths(){return [...new Set([...getDataMonths(),...extraMonths])].sort();}
+function monthLabel(ym){const[y,m]=ym.split('-');return new Date(+y,+m-1,1).toLocaleDateString('en-US',{month:'short',year:'2-digit'});}
+
+function addExtraMonth(){
+  const v=document.getElementById('addMonthInput').value;
+  if(!v)return;
+  const ym=v.slice(0,7); // yyyy-mm
+  if(!extraMonths.includes(ym))extraMonths.push(ym);
+  buildMonthTable(true);
+}
+
+const getAllSH=()=>SH_ZONES.flatMap(z=>z.stateheads.map(s=>s.name));
+function openTargetSetter(){showTargetSetter(true);}
+
+function showTargetSetter(keep=false){
+  buildMonthTable(keep);
+  document.getElementById('tgtOv').style.display='flex';
+}
+
+function buildMonthTable(keep=false){
+  const months=getAllMonths();
+  // Header
+  const head=document.getElementById('monthTblHead');
+  head.innerHTML='<th class="sticky-col">Statehead</th>'+months.map(m=>`<th>${monthLabel(m)}</th>`).join('');
+  // Body
+  const body=document.getElementById('monthTblBody');
+  body.innerHTML='';
+  SH_ZONES.forEach(({zone,stateheads})=>{
+    // Zone header row
+    body.innerHTML+=`<tr><td class="zone-row" colspan="${months.length+1}">⬡ ${zone}</td></tr>`;
+    stateheads.forEach(({name,states})=>{
+      const existing=stateTargets[name]||{};
+      const cells=months.map(m=>{
+        const cur=keep&&existing[m]?fmt(existing[m]/1e5,2):''; // pre-fill in Lakhs
+        return`<td><input type="number" min="0" step="0.01" placeholder="₹L" value="${cur}" id="ti-${CSS.escape(name)}-${m}" oninput="updateNatTotal()"></td>`;
+      }).join('');
+      body.innerHTML+=`<tr>
+        <td class="sticky-col" title="${states.slice(0,4).join(', ')}">${name}<div style="font-size:10px;color:var(--ts)">${states.slice(0,3).join(', ')}${states.length>3?'…':''}</div></td>
+        ${cells}
+      </tr>`;
+    });
+  });
+  // Footer national totals
+  const foot=document.getElementById('monthTblFoot');
+  foot.innerHTML='<td class="sticky-col">🇮🇳 National Total</td>'+months.map(m=>`<td id="natCol-${m}" style="color:var(--gold);font-weight:600">—</td>`).join('');
+  updateNatTotal();
+}
+
+function updateNatTotal(){
+  const months=getAllMonths();
+  months.forEach(m=>{
+    let t=0;
+    getAllSH().forEach(sh=>{const el=document.getElementById(`ti-${CSS.escape(sh)}-${m}`);if(el)t+=parseFloat(el.value)||0;});
+    const el=document.getElementById(`natCol-${m}`);
+    if(el)el.textContent=t>0?'₹'+fmt(t,2)+'L':'—';
+  });
+  document.getElementById('natTotalLbl').textContent='Enter targets in Lakhs (₹L)';
+}
+
+function applyTargets(){
+  const months=getAllMonths();
+  getAllSH().forEach(sh=>{
+    if(!stateTargets[sh])stateTargets[sh]={};
+    months.forEach(m=>{
+      const el=document.getElementById(`ti-${CSS.escape(sh)}-${m}`);
+      if(el){const v=parseFloat(el.value);stateTargets[sh][m]=isNaN(v)||v<=0?null:v*1e5;} // store as rupees
+    });
+  });
+  document.getElementById('tgtOv').style.display='none';
+  buildDashboard();
+}
+const SH_ZONES=[
+  {zone:'K S Sapan',stateheads:[
+    {name:'Giribabu V',states:['Tamil Nadu','Pondicherry','Puducherry']},
+    {name:'Devireddy Prem Kumar Reddy',states:['Andhra Pradesh','Telangana']},
+    {name:'Srinivasan R',states:['Bangalore']},
+    {name:'Kumar Ranjan',states:['Rest of Karnataka','Karnataka']},
+    {name:'Rajiv Lochan Kumar',states:['West Bengal','Orissa','Orrissa','Odisha','North East Region','North East','Assam','Meghalaya','Manipur','Mizoram','Nagaland','Tripura','Arunachal Pradesh','Sikkim']},
+  ]},
+  {zone:'Sunil Swarnkar',stateheads:[
+    {name:'Vivek Parekh',states:['Gujarat']},
+    {name:'Rohit Pulani',states:['Punjab','Jammu Kashmir','Jammu & Kashmir','Jammu and Kashmir','J&K','Uttarakhand','Himachal Pradesh']},
+    {name:'Rupak Khanna',states:['Rajasthan']},
+  ]},
+  {zone:'Rahul',stateheads:[
+    {name:'Amit Kumar Mishra',states:['UP','Uttar Pradesh','Bihar','Chattisgarh','Chhattisgarh']},
+    {name:'Deepak Sharma',states:['Haryana']},
+    {name:'Suraj Bidhuri',states:['Central Delhi','Delhi']},
+    {name:'Aftab Ahmad',states:['NCR','NCR except Delhi','Delhi NCR']},
+  ]},
+  {zone:'Bibin',stateheads:[
+    {name:'Suneer K',states:['Kerala','Goa']},
+    {name:'Nikhil Mandale',states:['Mumbai']},
+    {name:'Aniruddh Mandhanya',states:['Rest of Maharashtra','Maharashtra','Madhya Pradesh','MP']},
+  ]},
+];
+
+// Build lookup tables once
+const RSM_LOOKUP={};   // normalised RSM string → canonical SH name
+const STATE_LOOKUP={}; // normalised state string → canonical SH name
+const CITY_LOOKUP={};  // normalised city keyword → canonical SH name
+SH_ZONES.forEach(({stateheads})=>{
+  stateheads.forEach(({name,states})=>{
+    const nk=name.toLowerCase().replace(/[^a-z\s]/g,' ').replace(/\s+/g,' ').trim();
+    RSM_LOOKUP[nk]=name;
+    states.forEach(s=>STATE_LOOKUP[s.toLowerCase().trim()]=name);
+  });
+});
+CITY_LOOKUP['mumbai']=CITY_LOOKUP['bombay']='Nikhil Mandale';
+CITY_LOOKUP['bangalore']=CITY_LOOKUP['bengaluru']='Srinivasan R';
+
+function getStateheadForRow(row){
+  // 1. RSM column (most reliable — disambiguates Mumbai/Rest-MH, Bangalore/Rest-KA, etc.)
+  if(map.rsm&&row[map.rsm]){
+    const rn=String(row[map.rsm]).toLowerCase().replace(/[^a-z\s]/g,' ').replace(/\s+/g,' ').trim();
+    for(const[key,sh]of Object.entries(RSM_LOOKUP)){
+      if(rn===key||rn.startsWith(key)||rn.includes(key))return sh;
+      // first+last name partial match for long names
+      const parts=key.split(' ').filter(p=>p.length>2);
+      if(parts.length>=2&&parts.every(p=>rn.includes(p)))return sh;
+    }
+  }
+  // 2. City column (handles Mumbai vs Maharashtra ambiguity)
+  if(map.city&&row[map.city]){
+    const cn=String(row[map.city]).toLowerCase().trim();
+    for(const[k,sh]of Object.entries(CITY_LOOKUP)){if(cn.includes(k))return sh;}
+  }
+  // 3. State column fallback
+  if(map.state&&row[map.state]){
+    const sn=String(row[map.state]).toLowerCase().trim();
+    if(STATE_LOOKUP[sn])return STATE_LOOKUP[sn];
+    for(const[k,sh]of Object.entries(STATE_LOOKUP)){if(sn.includes(k)||k.includes(sn))return sh;}
+  }
+  return 'Unmatched';
+}
 
 function uniq(field){return map[field]?[...new Set(rawData.map(r=>String(r[map[field]]||'')).filter(Boolean))].sort():[];}
 
@@ -430,56 +640,172 @@ function applyFilters(){
   });renderAll();
 }
 
-function renderAll(){renderKPIs();renderTargets();renderRMTable();renderTrend();renderDonut();renderRegion();renderNetwork();renderCcy();renderHour();renderVertical();renderStateTable();renderRecent();}
+function renderAll(){renderKPIs();renderTargets();renderMonthwiseAchievement();renderRMTable();renderTrend();renderDonut();renderRegion();renderNetwork();renderCcy();renderHour();renderVertical();renderStateTable();renderRecent();}
 
 function renderKPIs(){
-  let total=filtered.length,dccYes=0,vol=0,states=new Set(),rms=new Set(),ccys={},nets={};
+  let total=filtered.length,dccCnt=0,icaVol=0,dccVol=0,states=new Set(),rms=new Set(),ccys={},nets={};
   filtered.forEach(r=>{
+    const a=parseFloat(r[map.amount]||0);if(!isNaN(a))icaVol+=a;
     const d=map.isDCC&&isDCC(r[map.isDCC]);
-    if(d){dccYes++;const a=parseFloat(r[map.amount]||0);if(!isNaN(a))vol+=a;}
+    if(d){dccCnt++;if(!isNaN(a))dccVol+=a;}
     if(map.state&&r[map.state])states.add(r[map.state]);
     if(map.rm&&r[map.rm])rms.add(r[map.rm]);
     if(map.cardCcy&&r[map.cardCcy]&&d){const c=r[map.cardCcy];ccys[c]=(ccys[c]||0)+1;}
     if(map.network&&r[map.network]){const n=r[map.network];nets[n]=(nets[n]||0)+1;}
   });
+  const convPct=icaVol>0?dccVol/icaVol*100:null;
   const topC=Object.entries(ccys).sort((a,b)=>b[1]-a[1])[0];
-  const topN=Object.entries(nets).sort((a,b)=>b[1]-a[1])[0];
-  document.getElementById('kTotal').textContent=fmt(total);document.getElementById('kTotalS').textContent='all transactions';
-  document.getElementById('kDCC').textContent=fmt(dccYes);document.getElementById('kDCCS').textContent='IS_DCC = Yes';
-  document.getElementById('kUptake').textContent=total?fmt(pct(dccYes,total),1)+'%':'—';document.getElementById('kUptakeS').textContent=fmt(total-dccYes)+' did not opt';
-  document.getElementById('kVol').textContent=fmtCcy(vol);document.getElementById('kVolS').textContent='IS_DCC = Yes only';
+  document.getElementById('kICA').textContent=fmtL(icaVol);document.getElementById('kICAS').textContent=fmt(total)+' transactions';
+  document.getElementById('kVol').textContent=fmtL(dccVol);document.getElementById('kVolS').textContent=fmt(dccCnt)+' DCC transactions';
+  document.getElementById('kConv').textContent=convPct!==null?fmt(convPct,2)+'%':'—';document.getElementById('kConvS').textContent='DCC ÷ ICA amount';
+  document.getElementById('kTotal').textContent=fmt(total);document.getElementById('kTotalS').textContent='total ICA transactions';
+  document.getElementById('kDCC').textContent=fmt(dccCnt);document.getElementById('kDCCS').textContent=fmt(total-dccCnt)+' non-DCC';
   document.getElementById('kCcy').textContent=topC?topC[0]:'—';document.getElementById('kCcyS').textContent=topC?fmt(topC[1])+' DCC txns':'';
-  document.getElementById('kNet').textContent=topN?topN[0]:'—';document.getElementById('kNetS').textContent=topN?fmt(topN[1])+' transactions':'';
-  document.getElementById('kStates').textContent=fmt(states.size);document.getElementById('kStatesS').textContent='with DCC activity';
+  document.getElementById('kStates').textContent=fmt(states.size);document.getElementById('kStatesS').textContent='with transactions';
   document.getElementById('kRMs').textContent=fmt(rms.size);document.getElementById('kRMsS').textContent='relationship managers';
 }
 
 function renderTargets(){
   const sel=document.getElementById('tgtMonth').value;
-  const hasT=Object.values(stateTargets).some(v=>v>0);
-  if(!sel||!map.state){document.getElementById('noTgtMsg').style.display='block';document.getElementById('sgrid').style.display='none';return;}
-  const sv={};
+  const hasT=getAllSH().some(sh=>{const t=stateTargets[sh];return t&&Object.values(t).some(v=>v>0);});
+  if(!sel){document.getElementById('noTgtMsg').style.display='block';document.getElementById('sgrid').style.display='none';document.getElementById('zonesBarsWrap').style.display='none';document.getElementById('shGridLabel').style.display='none';return;}
+
+  // Compute ICA + DCC per statehead for selected month
+  const shICA={},shDCC={};
+  let natICA=0,natDCC=0;
   rawData.forEach(r=>{
-    if(!map.isDCC||!isDCC(r[map.isDCC]))return;
     const d=parseD(r[map.date]);if(!d)return;
     const ym=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');if(ym!==sel)return;
-    const st=String(r[map.state]||'Unknown');const a=parseFloat(r[map.amount]||0);if(!isNaN(a))sv[st]=(sv[st]||0)+a;
+    const a=parseFloat(r[map.amount]||0);if(isNaN(a))return;
+    natICA+=a;
+    const sh=getStateheadForRow(r);if(sh)shICA[sh]=(shICA[sh]||0)+a;
+    if(map.isDCC&&isDCC(r[map.isDCC])){
+      natDCC+=a;
+      if(sh)shDCC[sh]=(shDCC[sh]||0)+a;
+    }
   });
-  const states=getStates();let nA=0,nT=0;
-  states.forEach(st=>{nA+=sv[st]||0;if(stateTargets[st])nT+=stateTargets[st];});
-  const nP=nT>0?Math.min(nA/nT*100,150):null;
-  document.getElementById('natPct').textContent=nP!==null?fmt(nP,1)+'%':'No targets';
-  document.getElementById('natNums').textContent=`Actual: ${fmtCcy(nA)}  /  Target: ${nT?fmtCcy(nT):'—'}`;
-  if(nP!==null){const f=document.getElementById('natFill');f.style.width=Math.min(nP,100)+'%';f.style.background=nP>=100?'var(--gold)':nP>=75?'var(--green)':nP>=50?'var(--amber)':'var(--red)';document.getElementById('natPct').className='nat-bar-pct '+(nP>=100?'cgold':nP>=75?'cgreen':nP>=50?'camber':'cred');}
-  if(!hasT){document.getElementById('noTgtMsg').style.display='block';document.getElementById('sgrid').style.display='none';return;}
-  document.getElementById('noTgtMsg').style.display='none';document.getElementById('sgrid').style.display='grid';
-  const sorted=[...states].sort((a,b)=>{const ta=stateTargets[a]||0,tb=stateTargets[b]||0;return(tb?(sv[b]||0)/tb:0)-(ta?(sv[a]||0)/ta:0);});
-  document.getElementById('sgrid').innerHTML=sorted.map(st=>{
-    const actual=sv[st]||0,tgt=stateTargets[st];
-    if(!tgt)return`<div class="scard" style="border-left-color:var(--bd2)"><div class="scard-head"><div class="scard-name">${st}</div><div class="no-tgt-txt">no target</div></div><div class="scard-nums"><div class="scard-actual">Vol: ${fmtCcy(actual)}</div></div></div>`;
-    const p2=actual/tgt*100,clr=p2>=100?'var(--gold)':p2>=75?'var(--green)':p2>=50?'var(--amber)':'var(--red)',cls=p2>=100?'cgold':p2>=75?'cgreen':p2>=50?'camber':'cred';
-    return`<div class="scard" style="border-left-color:${clr}"><div class="scard-head"><div class="scard-name">${st}</div><div class="scard-pct ${cls}">${fmt(p2,1)}%</div></div><div class="scard-nums"><div class="scard-actual">Actual: ${fmtCcy(actual)}</div><div class="scard-target">Target: ${fmtCcy(tgt)}</div></div><div class="sbar-track"><div class="sbar-fill" style="width:${Math.min(p2,100)}%;background:${clr}"></div></div></div>`;
+
+  const tgtForSH=sh=>(stateTargets[sh]||{})[sel]||null;
+  const allSH=getAllSH();
+  let nT=0; allSH.forEach(sh=>{const t=tgtForSH(sh);if(t)nT+=t;});
+  const natConv=natICA>0?natDCC/natICA*100:null;
+  const nP=nT>0?Math.min(natDCC/nT*100,150):null;
+
+  document.getElementById('natPct').textContent=nP!==null?fmt(nP,1)+'% Ach':'No targets';
+  document.getElementById('natPct').className='nat-bar-pct '+(nP===null?'':nP>=100?'cgold':nP>=75?'cgreen':nP>=50?'camber':'cred');
+  document.getElementById('natNums').innerHTML=
+    `ICA <strong>${fmtL(natICA)}</strong> &nbsp;|&nbsp; DCC <strong>${fmtL(natDCC)}</strong> &nbsp;|&nbsp; Conv <strong>${natConv!==null?fmt(natConv,2)+'%':'—'}</strong>${nT?` &nbsp;|&nbsp; Target <strong>${fmtL(nT)}</strong>`:''}`;
+  if(nP!==null){const f=document.getElementById('natFill');f.style.width=Math.min(nP,100)+'%';f.style.background=nP>=100?'var(--gold)':nP>=75?'var(--green)':nP>=50?'var(--amber)':'var(--red)';}
+
+  if(!hasT){document.getElementById('noTgtMsg').style.display='block';document.getElementById('sgrid').style.display='none';document.getElementById('zonesBarsWrap').style.display='none';document.getElementById('shGridLabel').style.display='none';return;}
+  document.getElementById('noTgtMsg').style.display='none';
+
+  // Zone summary bars
+  const zw=document.getElementById('zonesBarsWrap');zw.style.display='block';
+  zw.innerHTML=SH_ZONES.map(({zone,stateheads})=>{
+    let zICA=0,zDCC=0,zT=0;
+    stateheads.forEach(({name})=>{zICA+=shICA[name]||0;zDCC+=shDCC[name]||0;const t=tgtForSH(name);if(t)zT+=t;});
+    const zConv=zICA>0?zDCC/zICA*100:null;
+    const zP=zT>0?Math.min(zDCC/zT*100,150):null;
+    const clr=zP===null?'var(--tm)':zP>=100?'var(--gold)':zP>=75?'var(--green)':zP>=50?'var(--amber)':'var(--red)';
+    const cls=zP===null?'':zP>=100?'cgold':zP>=75?'cgreen':zP>=50?'camber':'cred';
+    return`<div class="zone-bar-wrap">
+      <div class="zone-bar-head"><span class="zone-bar-name">⬡ ${zone}</span><span class="zone-bar-pct ${cls}">${zP!==null?fmt(zP,1)+'% Ach':'—'}</span></div>
+      <div class="zone-bar-nums">ICA <strong>${fmtL(zICA)}</strong> &nbsp;|&nbsp; DCC <strong>${fmtL(zDCC)}</strong> &nbsp;|&nbsp; Conv <strong>${zConv!==null?fmt(zConv,2)+'%':'—'}</strong>${zT?` &nbsp;|&nbsp; Tgt <strong>${fmtL(zT)}</strong>`:''}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${zP!==null?Math.min(zP,100):0}%;background:${clr}"></div></div>
+    </div>`;
   }).join('');
+
+  // Statehead cards
+  document.getElementById('shGridLabel').style.display='block';
+  document.getElementById('sgrid').style.display='grid';
+  document.getElementById('sgrid').innerHTML=SH_ZONES.flatMap(({zone,stateheads})=>
+    stateheads.map(({name,states})=>{
+      const ica=shICA[name]||0,dcc=shDCC[name]||0,tgt=tgtForSH(name);
+      const conv=ica>0?dcc/ica*100:null;
+      const convStr=conv!==null?fmt(conv,2)+'%':'—';
+      if(!tgt)return`<div class="scard" style="border-left-color:var(--bd2)">
+        <div class="scard-head"><div class="scard-name">${name}</div><div class="no-tgt-txt">no target</div></div>
+        <div style="font-size:11px;margin-top:4px">ICA <strong>${fmtL(ica)}</strong> | DCC <strong>${fmtL(dcc)}</strong> | Conv <strong>${convStr}</strong></div>
+        <div style="font-size:10px;color:var(--tm);margin-top:4px">${zone} · ${states.slice(0,3).join(', ')}</div></div>`;
+      const p2=dcc/tgt*100,clr=p2>=100?'var(--gold)':p2>=75?'var(--green)':p2>=50?'var(--amber)':'var(--red)',cls=p2>=100?'cgold':p2>=75?'cgreen':p2>=50?'camber':'cred';
+      return`<div class="scard" style="border-left-color:${clr}">
+        <div class="scard-head"><div class="scard-name">${name}</div><div class="scard-pct ${cls}">${fmt(p2,1)}% Ach</div></div>
+        <div style="font-size:11px;margin:4px 0">ICA <strong>${fmtL(ica)}</strong> | DCC <strong>${fmtL(dcc)}</strong> | Conv <strong>${convStr}</strong></div>
+        <div style="font-size:11px;color:var(--ts);margin-bottom:6px">Target <strong style="color:var(--tp)">${fmtL(tgt)}</strong></div>
+        <div class="sbar-track"><div class="sbar-fill" style="width:${Math.min(p2,100)}%;background:${clr}"></div></div>
+        <div style="font-size:10px;color:var(--tm);margin-top:6px">${zone} · ${states.slice(0,3).join(', ')}${states.length>3?'…':''}</div></div>`;
+    })
+  ).join('');
+
+  // Unmatched card
+  if((shDCC['Unmatched']||0)>0||(shICA['Unmatched']||0)>0){
+    const uICA=shICA['Unmatched']||0,uDCC=shDCC['Unmatched']||0,uConv=uICA>0?uDCC/uICA*100:null;
+    document.getElementById('sgrid').innerHTML+=`<div class="scard" style="border-left-color:var(--amber)">
+      <div class="scard-head"><div class="scard-name" style="color:var(--amber)">⚠ Unmatched RSM</div><div class="no-tgt-txt">no target</div></div>
+      <div style="font-size:11px;margin-top:4px;color:var(--amber)">ICA <strong>${fmtL(uICA)}</strong> | DCC <strong>${fmtL(uDCC)}</strong> | Conv <strong>${uConv!==null?fmt(uConv,2)+'%':'—'}</strong></div>
+      <div style="font-size:10px;color:var(--ts);margin-top:4px">Blank/unrecognised RSM — included in National total</div></div>`;
+  }
+}
+
+function renderMonthwiseAchievement(){
+  const months=getAllMonths();
+  const hasAnyTarget=getAllSH().some(sh=>{const t=stateTargets[sh];return t&&Object.values(t).some(v=>v>0);});
+  const sec=document.getElementById('monthAchSec');
+  if(!months.length){sec.style.display='none';return;}
+  sec.style.display='block';
+
+  // Compute ICA + DCC per statehead per month
+  const shMICA={},shMDCC={}; // {sh: {ym: amount}}
+  const natMICA={},natMDCC={}; // {ym: amount}
+  rawData.forEach(r=>{
+    const d=parseD(r[map.date]);if(!d)return;
+    const ym=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+    const a=parseFloat(r[map.amount]||0);if(isNaN(a))return;
+    natMICA[ym]=(natMICA[ym]||0)+a;
+    const sh=getStateheadForRow(r);
+    if(sh){if(!shMICA[sh])shMICA[sh]={};shMICA[sh][ym]=(shMICA[sh][ym]||0)+a;}
+    if(map.isDCC&&isDCC(r[map.isDCC])){
+      natMDCC[ym]=(natMDCC[ym]||0)+a;
+      if(sh){if(!shMDCC[sh])shMDCC[sh]={};shMDCC[sh][ym]=(shMDCC[sh][ym]||0)+a;}
+    }
+  });
+
+  function cell(ica,dcc,tgt){
+    const conv=ica>0?dcc/ica*100:null;
+    const ach=tgt>0?dcc/tgt*100:null;
+    if(conv===null&&ach===null)return`<span style="color:var(--tm);font-size:11px">—</span>`;
+    const achBg=ach===null?'transparent':ach>=100?'var(--gbg)':ach>=75?'var(--gnbg)':ach>=50?'var(--ambg)':'var(--rdbg)';
+    const achFg=ach===null?'var(--ts)':ach>=100?'var(--gold2)':ach>=75?'var(--green)':ach>=50?'var(--amber)':'var(--red)';
+    const convFg=conv===null?'var(--ts)':conv>=80?'var(--green)':conv>=50?'var(--amber)':'var(--red)';
+    return(conv!==null?`<div style="font-size:11px;font-weight:600;color:${convFg}">${fmt(conv,2)}%</div><div style="font-size:10px;color:var(--ts)">Conv</div>`:'')
+      +(ach!==null?`<div style="margin-top:3px"><span class="ach-pill" style="background:${achBg};color:${achFg}">${fmt(ach,1)}% Ach</span></div>`:'');
+  }
+
+  // Header — each month gets 1 column (shows Conv% + Ach% stacked)
+  document.getElementById('achTblHead').innerHTML=
+    `<th class="sticky-col">Statehead</th>`+months.map(m=>`<th>${monthLabel(m)}</th>`).join('');
+
+  let bodyHTML='';
+  SH_ZONES.forEach(({zone,stateheads})=>{
+    bodyHTML+=`<tr><td class="zone-row" colspan="${months.length+1}">⬡ ${zone}</td></tr>`;
+    stateheads.forEach(({name})=>{
+      const mICA=shMICA[name]||{},mDCC=shMDCC[name]||{},tgts=stateTargets[name]||{};
+      const hasData=months.some(m=>(mICA[m]||0)>0||(mDCC[m]||0)>0||(tgts[m]||0)>0);
+      if(!hasData)return;
+      const cells=months.map(m=>`<td>${cell(mICA[m]||0,mDCC[m]||0,tgts[m]||0)}</td>`).join('');
+      bodyHTML+=`<tr><td class="sticky-col">${name}</td>${cells}</tr>`;
+    });
+  });
+  document.getElementById('achTblBody').innerHTML=bodyHTML;
+
+  // National footer
+  const natCells=months.map(m=>{
+    const nICA=natMICA[m]||0,nDCC=natMDCC[m]||0;
+    const nTgt=getAllSH().reduce((s,sh)=>s+((stateTargets[sh]||{})[m]||0),0);
+    return`<td>${cell(nICA,nDCC,nTgt)}</td>`;
+  }).join('');
+  document.getElementById('achTblFoot').innerHTML=`<td class="sticky-col">🇮🇳 National</td>${natCells}`;
 }
 
 function renderRMTable(){
