@@ -7,16 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f0f3f9;--sf:#ffffff;--sf2:#f5f7fc;--sf3:#eaecf4;
-  --bd:rgba(0,0,0,0.07);--bd2:rgba(0,0,0,0.13);
-  --tp:#1a2038;--ts:#566285;--tm:#9ba3bc;
-  --gold:#c47c08;--gold2:#e8972c;--gbg:rgba(196,124,8,0.08);--gbdr:rgba(196,124,8,0.3);
-  --green:#16a34a;--gnbg:rgba(22,163,74,0.08);
-  --amber:#d97706;--ambg:rgba(217,119,6,0.09);
+  --bg:#f0f7f2;--sf:#ffffff;--sf2:#e8f5ed;--sf3:#d4ecdd;
+  --bd:rgba(0,90,40,0.10);--bd2:rgba(0,90,40,0.20);
+  --tp:#002d14;--ts:#2e6644;--tm:#7aaa8a;
+  --gold:#00843d;--gold2:#00a34c;--gbg:rgba(0,132,61,0.09);--gbdr:rgba(0,132,61,0.35);
+  --green:#00843d;--gnbg:rgba(0,132,61,0.09);
+  --amber:#b45309;--ambg:rgba(180,83,9,0.09);
   --red:#dc2626;--rdbg:rgba(220,38,38,0.08);
-  --blue:#2563eb;--blbg:rgba(37,99,235,0.08);
-  --purple:#7c3aed;--pubg:rgba(124,58,237,0.08);
-  --sh:0 1px 4px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.04);
+  --blue:#1a5276;--blbg:rgba(26,82,118,0.09);
+  --purple:#6b21a8;--pubg:rgba(107,33,168,0.08);
+  --sh:0 1px 4px rgba(0,80,35,0.09),0 1px 2px rgba(0,80,35,0.05);
   --r:8px;--rl:12px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -26,9 +26,9 @@ body{background:var(--bg);color:var(--tp);font-family:'DM Sans',system-ui,sans-s
 @keyframes sp{to{transform:rotate(360deg)}}
 #loadMsg{color:var(--ts);font-size:13px}
 /* Upload */
-#up{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:linear-gradient(135deg,#f0f3f9 0%,#e8edf8 100%)}
-.logo{font-family:'DM Serif Display',Georgia,serif;font-size:34px;letter-spacing:-.5px;margin-bottom:6px;color:var(--tp)}
-.logo span{color:var(--gold)}
+#up{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:linear-gradient(145deg,#f0f7f2 0%,#d4ecdd 100%)}
+.logo{font-family:'DM Serif Display',Georgia,serif;font-size:34px;letter-spacing:-.5px;margin-bottom:6px;color:#002d14}
+.logo span{color:#00843d}
 .tagline{color:var(--ts);font-size:14px;margin-bottom:40px}
 .up-card{background:var(--sf);border-radius:var(--rl);box-shadow:var(--sh);padding:32px;width:100%;max-width:520px}
 .dataset-status{background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);padding:12px 14px;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px}
@@ -41,7 +41,8 @@ body{background:var(--bg);color:var(--tp);font-family:'DM Sans',system-ui,sans-s
 .dico svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .dtitle{font-size:15px;font-weight:500;margin-bottom:4px}
 .dsub{color:var(--ts);font-size:12px;margin-bottom:18px}
-.ubtn{background:var(--gold);color:#fff;font-family:inherit;font-size:13px;font-weight:600;padding:8px 20px;border-radius:var(--r);border:none;cursor:pointer}
+.ubtn{background:#00843d;color:#fff;font-family:inherit;font-size:13px;font-weight:600;padding:8px 20px;border-radius:var(--r);border:none;cursor:pointer}
+.ubtn:hover{background:#006b30}
 .priv{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--tm);font-size:11px}
 .up-actions{display:flex;gap:8px;margin-top:14px}
 .up-action-btn{flex:1;padding:8px;border-radius:var(--r);font-family:inherit;font-size:12px;cursor:pointer;border:1px solid var(--bd2);background:var(--sf2);color:var(--ts)}
@@ -51,7 +52,8 @@ body{background:var(--bg);color:var(--tp);font-family:'DM Sans',system-ui,sans-s
 .ocard{background:var(--sf);border-radius:var(--rl);box-shadow:0 8px 32px rgba(0,0,0,.15);padding:28px;max-width:580px;width:100%;max-height:90vh;overflow-y:auto}
 .otitle{font-size:17px;font-weight:600;margin-bottom:5px;color:var(--tp)}
 .osub{color:var(--ts);font-size:12px;margin-bottom:22px}
-.obtn{background:var(--gold);color:#fff;font-family:inherit;font-size:13px;font-weight:600;padding:10px;border-radius:var(--r);border:none;cursor:pointer;width:100%}
+.obtn{background:#00843d;color:#fff;font-family:inherit;font-size:13px;font-weight:600;padding:10px;border-radius:var(--r);border:none;cursor:pointer;width:100%}
+.obtn:hover{background:#006b30}
 .obtn-secondary{background:var(--sf2);color:var(--ts);border:1px solid var(--bd2);font-family:inherit;font-size:13px;padding:10px;border-radius:var(--r);cursor:pointer;width:100%;margin-top:8px}
 /* Month confirm modal */
 .month-confirm-info{background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r);padding:14px;margin-bottom:16px}
@@ -104,7 +106,7 @@ body{background:var(--bg);color:var(--tp);font-family:'DM Sans',system-ui,sans-s
 #toastLink{font-size:11px;color:var(--blue);text-decoration:none;display:none;margin-top:6px}
 /* Dashboard */
 #dash{display:none}
-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:12px;flex-wrap:wrap;box-shadow:var(--sh)}
+header{background:var(--sf);border-bottom:1px solid var(--bd);border-top:4px solid #00843d;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:12px;flex-wrap:wrap;box-shadow:var(--sh)}
 .hlogo{font-family:'DM Serif Display',Georgia,serif;font-size:20px;flex-shrink:0;color:var(--tp)}
 .hlogo span{color:var(--gold)}
 .hmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -113,7 +115,8 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
 .mchip{background:var(--sf2);border:1px solid var(--bd2);color:var(--ts);font-size:11px;padding:2px 8px;border-radius:12px}
 .hbtn{background:var(--sf2);border:1px solid var(--bd2);color:var(--ts);font-family:inherit;font-size:12px;padding:5px 12px;border-radius:var(--r);cursor:pointer}
 .hbtn:hover{color:var(--tp);background:var(--sf3)}
-.hbtn-pub{background:var(--gold);color:#fff;border:none;font-family:inherit;font-size:12px;font-weight:600;padding:6px 14px;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;gap:6px}
+.hbtn-pub{background:#00843d;color:#fff;border:none;font-family:inherit;font-size:12px;font-weight:600;padding:6px 14px;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;gap:6px}
+.hbtn-pub:hover{background:#006b30}
 .hbtn-pub:disabled{opacity:.5;cursor:not-allowed}
 .pub-spin{width:12px;height:12px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:sp .6s linear infinite;display:none}
 .body{padding:20px 24px;max-width:1500px;margin:0 auto}
@@ -125,9 +128,9 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
 /* KPIs */
 .kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px}
 .kcard{background:var(--sf);border-radius:var(--rl);padding:14px 16px;box-shadow:var(--sh);border-left:3px solid transparent}
-.kcard.ica-card{border-left-color:var(--blue)}
-.kcard.dcc-card{border-left-color:var(--green)}
-.kcard.conv-card{border-left-color:var(--gold)}
+.kcard.ica-card{border-left-color:#1a5276}
+.kcard.dcc-card{border-left-color:#00843d}
+.kcard.conv-card{border-left-color:#00843d}
 .klbl{font-size:10.5px;color:var(--ts);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:500}
 .kval{font-size:22px;font-weight:600;line-height:1.1;color:var(--tp)}
 .ksub{font-size:11px;color:var(--tm);margin-top:4px}
@@ -217,7 +220,7 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
 
 <!-- Upload Screen -->
 <div id="up">
-  <div class="logo">DCC <span>Intel</span></div>
+  <div class="logo">Pine Labs · <span>DCC Intel</span></div>
   <div class="tagline">Dynamic Currency Conversion Intelligence Dashboard</div>
   <div class="up-card">
     <div class="dataset-status" id="datasetStatus" style="display:none">
@@ -321,7 +324,7 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
 <!-- Dashboard -->
 <div id="dash">
   <header>
-    <div class="hlogo">DCC <span>Intel</span></div>
+    <div class="hlogo">Pine Labs · <span>DCC Intel</span></div>
     <div class="hmeta">
       <span class="fbadge" id="fbadge">📊 No data</span>
       <div class="month-chips" id="monthChips"></div>
@@ -576,7 +579,7 @@ const tgtRs=t=>t*100000;
 const fmtTgt=t=>t?fmt(t,2)+'L':'—';
 const pct=(a,b)=>b>0?a/b*100:0;
 const parseHour=t=>{if(!t)return null;const m=String(t).match(/^(\d{1,2})[:h]/);return m?parseInt(m[1]):null;};
-const PALETTE=['#2563eb','#16a34a','#c47c08','#7c3aed','#d97706','#dc2626','#059669','#9333ea','#0891b2','#be185d'];
+const PALETTE=['#00843d','#1a5276','#b45309','#6b21a8','#0e7490','#dc2626','#059669','#7c3aed','#065f46','#9a3412'];
 
 function autoDetect(cols){
   const r={},cn=cols.map(norm);
@@ -979,7 +982,7 @@ function renderMonthwiseAchievement(){
 
 // ── Charts ──
 const dc=id=>{if(charts[id]){charts[id].destroy();delete charts[id];}};
-const GC='rgba(0,0,0,0.05)',TC='#7b87a2';
+const GC='rgba(0,100,50,0.07)',TC='#3a7a55';
 
 function renderTrend(){
   dc('tr');if(!map.date)return;
@@ -994,8 +997,8 @@ function renderTrend(){
   charts['tr']=new Chart(document.getElementById('cTrend'),{type:'line',data:{
     labels:keys.map(k=>new Date(k).toLocaleDateString('en-US',{month:'short',day:'numeric'})),
     datasets:[
-      {label:'ICA',data:keys.map(k=>(dICA[k]||0)/100000),borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,0.07)',borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:4},
-      {label:'DCC',data:keys.map(k=>(dDCC[k]||0)/100000),borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,0.07)',borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:4},
+      {label:'ICA',data:keys.map(k=>(dICA[k]||0)/100000),borderColor:'#1a5276',backgroundColor:'rgba(26,82,118,0.07)',borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:4},
+      {label:'DCC',data:keys.map(k=>(dDCC[k]||0)/100000),borderColor:'#00843d',backgroundColor:'rgba(0,132,61,0.08)',borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:4},
     ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:TC,font:{size:11},boxWidth:10,padding:12}}},
     scales:{x:{ticks:{color:TC,font:{size:10},maxTicksLimit:12},grid:{color:GC},border:{color:GC}},
             y:{ticks:{color:TC,font:{size:10},callback:v=>v+'L'},grid:{color:GC},border:{color:GC}}}}});
@@ -1016,7 +1019,7 @@ function renderConvMonth(){
   const convs=months.map(m=>mData[m].ica>0?+(pct(mData[m].dcc,mData[m].ica)).toFixed(2):0);
   charts['cm']=new Chart(document.getElementById('cConvMonth'),{type:'bar',data:{
     labels:months.map(monthLabel),
-    datasets:[{label:'Conv%',data:convs,backgroundColor:convs.map(v=>v>=5?'rgba(22,163,74,0.8)':v>=2?'rgba(196,124,8,0.7)':'rgba(220,38,38,0.7)'),borderRadius:5}]},
+    datasets:[{label:'Conv%',data:convs,backgroundColor:convs.map(v=>v>=5?'rgba(0,132,61,0.85)':v>=2?'rgba(180,83,9,0.75)':'rgba(220,38,38,0.7)'),borderRadius:5}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` Conv: ${fmt(c.raw,2)}%`}}},
     scales:{x:{ticks:{color:TC,font:{size:11}},grid:{display:false},border:{display:false}},
             y:{ticks:{color:TC,font:{size:10},callback:v=>v+'%'},grid:{color:GC},border:{color:GC}}}}});
@@ -1029,8 +1032,8 @@ function renderRegion(){
   charts['rg']=new Chart(document.getElementById('cRegion'),{type:'bar',data:{
     labels:s.map(([k])=>k),
     datasets:[
-      {label:'ICA',data:s.map(([,v])=>+(v.ica/100000).toFixed(2)),backgroundColor:'rgba(37,99,235,0.6)',borderRadius:4},
-      {label:'DCC',data:s.map(([,v])=>+(v.dcc/100000).toFixed(2)),backgroundColor:'rgba(22,163,74,0.8)',borderRadius:4},
+      {label:'ICA',data:s.map(([,v])=>+(v.ica/100000).toFixed(2)),backgroundColor:'rgba(26,82,118,0.65)',borderRadius:4},
+      {label:'DCC',data:s.map(([,v])=>+(v.dcc/100000).toFixed(2)),backgroundColor:'rgba(0,132,61,0.85)',borderRadius:4},
     ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:TC,font:{size:11},boxWidth:10,padding:8}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw}L`}}},
     scales:{x:{ticks:{color:'#1a2038',font:{size:10}},grid:{display:false},border:{display:false}},
             y:{ticks:{color:TC,font:{size:10},callback:v=>v+'L'},grid:{color:GC},border:{color:GC}}}}});
@@ -1048,7 +1051,7 @@ function renderCcy(){
   dc('cy');if(!map.cardCcy)return;
   const cv={};filtered.forEach(r=>{if(!map.isDCC||!isDCC(r[map.isDCC]))return;const c=String(r[map.cardCcy]||'');if(c)cv[c]=(cv[c]||0)+1;});
   const s=Object.entries(cv).sort((a,b)=>b[1]-a[1]).slice(0,8);
-  charts['cy']=new Chart(document.getElementById('cCcy'),{type:'bar',data:{labels:s.map(([k])=>k),datasets:[{data:s.map(([,v])=>v),backgroundColor:'rgba(124,58,237,0.7)',borderRadius:4}]},
+  charts['cy']=new Chart(document.getElementById('cCcy'),{type:'bar',data:{labels:s.map(([k])=>k),datasets:[{data:s.map(([,v])=>v),backgroundColor:'rgba(0,132,61,0.75)',borderRadius:4}]},
     options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},
     scales:{x:{ticks:{color:TC,font:{size:10}},grid:{color:GC}},y:{ticks:{color:'#1a2038',font:{size:11}},grid:{display:false},border:{display:false}}}}});
 }
@@ -1058,7 +1061,7 @@ function renderHour(){
   const hv=new Array(24).fill(0);
   filtered.forEach(r=>{if(!map.isDCC||!isDCC(r[map.isDCC]))return;const h=parseHour(r[map.timing]);if(h!==null&&h>=0&&h<24)hv[h]++;});
   const max=Math.max(...hv);
-  charts['hr']=new Chart(document.getElementById('cHour'),{type:'bar',data:{labels:Array.from({length:24},(_,i)=>i+'h'),datasets:[{data:hv,backgroundColor:hv.map(v=>v===max?'rgba(196,124,8,0.85)':'rgba(196,124,8,0.25)'),borderRadius:3}]},
+  charts['hr']=new Chart(document.getElementById('cHour'),{type:'bar',data:{labels:Array.from({length:24},(_,i)=>i+'h'),datasets:[{data:hv,backgroundColor:hv.map(v=>v===max?'rgba(0,132,61,0.9)':'rgba(0,132,61,0.18)'),borderRadius:3}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{display:false},border:{display:false}},y:{ticks:{color:TC,font:{size:10}},grid:{color:GC},border:{color:GC}}}}});
 }
 
