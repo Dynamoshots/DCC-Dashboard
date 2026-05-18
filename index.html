@@ -286,7 +286,10 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 24px;
       <tbody id="monthTblBody"></tbody>
       <tfoot><tr class="nat-row" id="monthTblFoot"><td class="sc">🇮🇳 National Total</td></tr></tfoot>
     </table></div>
-    <button class="obtn" onclick="applyTargets()">Save & Build Dashboard →</button>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <button class="obtn" onclick="applyTargets()" style="flex:2">Save & Build Dashboard →</button>
+      <button class="obtn-secondary" onclick="resetTargetsToDefault()" style="flex:1;margin-top:0">↩ Reset to defaults</button>
+    </div>
   </div>
 </div>
 
@@ -518,6 +521,26 @@ SH_ZONES.forEach(({stateheads})=>{
 CITY_LOOKUP['mumbai']=CITY_LOOKUP['bombay']='Nikhil Mandale';
 CITY_LOOKUP['bangalore']=CITY_LOOKUP['bengaluru']='Srinivasan R';
 
+// ── Pre-populated FY 26-27 targets (Crores × 100 = Lakhs) ──
+// Source: Overall DCC GTV TGT sheet. Duplicate rows (e.g. Amit Kumar Mishra-UP + Bihar) are summed.
+const DEFAULT_TARGETS={
+  'Giribabu V':                {'2026-04':81,'2026-05':78,'2026-06':78,'2026-07':76,'2026-08':103,'2026-09':114,'2026-10':149,'2026-11':194,'2026-12':217,'2027-01':205,'2027-02':216,'2027-03':203},
+  'Devireddy Prem Kumar Reddy':{'2026-04':243,'2026-05':233,'2026-06':233,'2026-07':227,'2026-08':309,'2026-09':341,'2026-10':446,'2026-11':582,'2026-12':651,'2027-01':615,'2027-02':647,'2027-03':608},
+  'Srinivasan R':              {'2026-04':89,'2026-05':85,'2026-06':85,'2026-07':83,'2026-08':113,'2026-09':125,'2026-10':163,'2026-11':213,'2026-12':239,'2027-01':226,'2027-02':237,'2027-03':223},
+  'Kumar Ranjan':              {'2026-04':65,'2026-05':62,'2026-06':62,'2026-07':60,'2026-08':82,'2026-09':91,'2026-10':119,'2026-11':155,'2026-12':174,'2027-01':164,'2027-02':172,'2027-03':162},
+  'Rajiv Lochan Kumar':        {'2026-04':8,'2026-05':8,'2026-06':8,'2026-07':8,'2026-08':10,'2026-09':11,'2026-10':15,'2026-11':19,'2026-12':22,'2027-01':21,'2027-02':22,'2027-03':20},
+  'Vivek Parekh':              {'2026-04':112,'2026-05':107,'2026-06':107,'2026-07':105,'2026-08':143,'2026-09':157,'2026-10':206,'2026-11':269,'2026-12':301,'2027-01':284,'2027-02':299,'2027-03':281},
+  'Rohit Pulani':              {'2026-04':56,'2026-05':54,'2026-06':54,'2026-07':52,'2026-08':71,'2026-09':79,'2026-10':103,'2026-11':134,'2026-12':150,'2027-01':142,'2027-02':149,'2027-03':140},
+  'Rupak Khanna':              {'2026-04':75,'2026-05':71,'2026-06':71,'2026-07':70,'2026-08':95,'2026-09':105,'2026-10':137,'2026-11':179,'2026-12':200,'2027-01':189,'2027-02':199,'2027-03':187},
+  'Amit Kumar Mishra':         {'2026-04':16,'2026-05':16,'2026-06':16,'2026-07':16,'2026-08':20,'2026-09':23,'2026-10':30,'2026-11':39,'2026-12':43,'2027-01':41,'2027-02':43,'2027-03':40},
+  'Deepak Sharma':             {'2026-04':146,'2026-05':140,'2026-06':140,'2026-07':136,'2026-08':185,'2026-09':204,'2026-10':267,'2026-11':349,'2026-12':391,'2027-01':369,'2027-02':388,'2027-03':365},
+  'Suraj Bidhuri':             {'2026-04':81,'2026-05':78,'2026-06':78,'2026-07':76,'2026-08':103,'2026-09':114,'2026-10':149,'2026-11':194,'2026-12':217,'2027-01':205,'2027-02':216,'2027-03':203},
+  'Aftab Ahmad':               {'2026-04':81,'2026-05':78,'2026-06':78,'2026-07':76,'2026-08':103,'2026-09':114,'2026-10':149,'2026-11':194,'2026-12':217,'2027-01':205,'2027-02':216,'2027-03':203},
+  'Suneer K':                  {'2026-04':340,'2026-05':326,'2026-06':326,'2026-07':317,'2026-08':433,'2026-09':477,'2026-10':624,'2026-11':815,'2026-12':911,'2027-01':861,'2027-02':905,'2027-03':851},
+  'Nikhil Mandale':            {'2026-04':186,'2026-05':178,'2026-06':178,'2026-07':174,'2026-08':237,'2026-09':261,'2026-10':342,'2026-11':446,'2026-12':499,'2027-01':472,'2027-02':496,'2027-03':466},
+  'Aniruddh Mandhanya':        {'2026-04':41,'2026-05':39,'2026-06':39,'2026-07':38,'2026-08':52,'2026-09':57,'2026-10':74,'2026-11':97,'2026-12':109,'2027-01':103,'2027-02':108,'2027-03':101},
+};
+
 function getStateheadForRow(row){
   if(map.rsm&&row[map.rsm]){
     const rn=String(row[map.rsm]).toLowerCase().replace(/[^a-z\s]/g,' ').replace(/\s+/g,' ').trim();
@@ -533,7 +556,9 @@ function getStateheadForRow(row){
 }
 
 // ── State ──
-let monthlyData={},map={},filtered=[],stateTargets={},charts={},extraMonths=[];
+let monthlyData={},map={},filtered=[],charts={},extraMonths=[];
+// Start with pre-populated targets; user edits override these and are saved on publish
+let stateTargets=JSON.parse(JSON.stringify(DEFAULT_TARGETS));
 let pendingRows=null,pendingCols=null; // temp during upload flow
 
 // Computed rawData = all months combined
@@ -584,7 +609,8 @@ window.addEventListener('DOMContentLoaded',()=>{
   if(INJECTED){
     monthlyData=INJECTED.monthlyData||{};
     map=INJECTED.map||{};
-    stateTargets=INJECTED.targets||{};
+    // Only override targets if user has previously saved custom ones
+    if(INJECTED.targets&&Object.keys(INJECTED.targets).length>0) stateTargets=INJECTED.targets;
     extraMonths=INJECTED.extraMonths||[];
     updateUploadScreen();
     if(Object.keys(monthlyData).length>0)buildDashboard();
@@ -712,6 +738,8 @@ function updateNatTotal(){
   });
   document.getElementById('natTotalLbl').textContent='';
 }
+
+function resetTargetsToDefault(){if(confirm('Reset all targets to the pre-loaded FY 26-27 values?')){stateTargets=JSON.parse(JSON.stringify(DEFAULT_TARGETS));buildMonthTable(true);}}
 
 function applyTargets(){
   getAllMonths().forEach(m=>{getAllSH().forEach(sh=>{const el=document.getElementById(`ti-${CSS.escape(sh)}-${m}`);if(el){const v=parseFloat(el.value);if(!stateTargets[sh])stateTargets[sh]={};stateTargets[sh][m]=isNaN(v)||v<=0?null:v;}});});
