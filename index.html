@@ -253,8 +253,8 @@ header{background:var(--sf);border-bottom:1px solid var(--bd);border-top:4px sol
       <div class="mc-row"><span class="mc-label">Existing data</span><span class="mc-value" id="mcExisting">—</span></div>
     </div>
     <label style="font-size:12px;color:var(--ts);display:block;margin-bottom:6px">Save this file as month:</label>
-    <input type="month" id="mcMonthInput" class="month-sel-input">
-    <div style="font-size:11px;color:var(--tm);margin-top:6px;margin-bottom:16px">If this month already exists in your dataset, it will be replaced.</div>
+    <select id="mcMonthInput" class="month-sel-input" style="width:100%"></select>
+    <div style="font-size:11px;color:var(--tm);margin-top:6px;margin-bottom:16px">If this month already exists in your dataset, it will be replaced with this file's data.</div>
     <button class="obtn" onclick="confirmSaveMonth()">Save & Add to Dataset</button>
     <button class="obtn-secondary" onclick="document.getElementById('monthConfirmOv').style.display='none'">Cancel</button>
   </div>
@@ -644,7 +644,11 @@ function updateUploadScreen(){
 }
 
 function goToUpload(){document.getElementById('dash').style.display='none';document.getElementById('up').style.display='flex';}
-function openDashboard(){document.getElementById('up').style.display='none';document.getElementById('dash').style.display='block';}
+function openDashboard(){
+  document.getElementById('up').style.display='none';
+  document.getElementById('dash').style.display='block';
+  buildDashboard();
+}
 function confirmClearData(){if(confirm('This will delete all saved monthly data. Are you sure?')){monthlyData={};map={};filtered=[];stateTargets={};extraMonths=[];Object.values(charts).forEach(c=>c.destroy());charts={};document.getElementById('dash').style.display='none';updateUploadScreen();}}
 
 // ── File upload ──
@@ -692,11 +696,15 @@ function applyMapping(){
 function showMonthConfirm(rows){
   const detected=detectDominantMonth(rows)||getFYMonths()[0];
   const existingMonths=Object.keys(monthlyData).sort();
-  document.getElementById('mcDetected').textContent=monthLabel(detected);
+  document.getElementById('mcDetected').textContent=monthLabel(detected)+' (auto-detected)';
   document.getElementById('mcRecords').textContent=fmt(rows.length)+' records';
   document.getElementById('mcExisting').textContent=existingMonths.length?existingMonths.map(m=>monthLabel(m)).join(', '):'None (first upload)';
-  // Set month input
-  const mi=document.getElementById('mcMonthInput');mi.value=detected;
+
+  // Populate month select with all FY 26-27 months + any extra months
+  const allM=[...new Set([...getFYMonths(),...extraMonths,...Object.keys(monthlyData)])].sort();
+  const sel=document.getElementById('mcMonthInput');
+  sel.innerHTML=allM.map(m=>`<option value="${m}"${m===detected?' selected':''}>${monthLabel(m)}${monthlyData[m]?' (replace existing)':''}</option>`).join('');
+
   document.getElementById('monthConfirmOv').style.display='flex';
 }
 
@@ -754,6 +762,7 @@ function applyTargets(){
 function uniq(field){return map[field]?[...new Set(getRawData().map(r=>String(r[map[field]]||'')).filter(Boolean))].sort():[];}
 
 function buildDashboard(){
+  try{
   const rawData=getRawData();
   if(!rawData.length)return;
   const setOpts=(id,lbl,vals)=>{document.getElementById(id).innerHTML=`<option value="">${lbl}</option>`+vals.map(v=>`<option>${v}</option>`).join('');};
@@ -762,7 +771,6 @@ function buildDashboard(){
   setOpts('fVertical','All Verticals',uniq('vertical'));
   setOpts('fNetwork','All Networks',uniq('network'));
   const dMonths=getDataMonths();
-  setOpts('fMonth','All Months',dMonths.map(m=>({v:m,l:monthLabel(m)})).map(({v,l})=>`<option value="${v}">${l}</option>`).join('').replace(/<option/g,'<option').replace(/value="([^"]+)">/g,(match,v)=>`value="${v}">`));
   document.getElementById('fMonth').innerHTML='<option value="">All Months</option>'+dMonths.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join('');
 
   const allM=getAllMonths();
@@ -778,6 +786,7 @@ function buildDashboard(){
   document.getElementById('dash').style.display='block';
   filtered=[...rawData];
   renderAll();
+  }catch(err){console.error('Dashboard build error:',err);alert('Error building dashboard: '+err.message+'\n\nCheck the browser console for details.');}
 }
 
 function applyFilters(){
